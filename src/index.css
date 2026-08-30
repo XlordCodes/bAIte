@@ -1,0 +1,117 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+@import 'tailwindcss';
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  background: #050505;
+}
+
+/* Visible keyboard focus for every interactive control */
+:focus-visible {
+  outline: 2px solid #8ec5ff;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Hide scrollbars until scrolling */
+.scroll-area {
+  scrollbar-width: none;
+}
+.scroll-area::-webkit-scrollbar {
+  display: none;
+}
+
+/* Temperature range slider — glowing blue track + white thumb */
+.baite-range {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 8px;
+  border-radius: 9999px;
+  background: linear-gradient(
+    to right,
+    #3d86ff 0%,
+    #8ec5ff var(--val, 50%),
+    rgba(255, 255, 255, 0.12) var(--val, 50%),
+    rgba(255, 255, 255, 0.12) 100%
+  );
+}
+.baite-range:focus-visible::-webkit-slider-thumb {
+  outline: 2px solid #8ec5ff;
+  outline-offset: 3px;
+}
+.baite-range:focus-visible::-moz-range-thumb {
+  outline: 2px solid #8ec5ff;
+  outline-offset: 3px;
+}
+.baite-range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 24px;
+  width: 24px;
+  border-radius: 9999px;
+  background: #ffffff;
+  box-shadow: 0 0 18px rgba(150, 200, 255, 0.9);
+  cursor: pointer;
+}
+.baite-range::-moz-range-thumb {
+  height: 24px;
+  width: 24px;
+  border: none;
+  border-radius: 9999px;
+  background: #ffffff;
+  box-shadow: 0 0 18px rgba(150, 200, 255, 0.9);
+  cursor: pointer;
+}
+
+/* Success celebration */
+@keyframes burst {
+  0% {
+    transform: translate(0, 0) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(var(--tx), var(--ty)) scale(0.4);
+    opacity: 0;
+  }
+}
+@keyframes flash {
+  0% {
+    opacity: 0;
+  }
+  30% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+/* Respect reduced-motion: collapse decorative movement to a plain fade */
+@media (prefers-reduced-motion: reduce) {
+  .baite-burst {
+    animation: none !important;
+    display: none !important;
+  }
+  .baite-flash {
+    animation: baite-fade 0.6s ease-out !important;
+  }
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+  }
+}
+@keyframes baite-fade {
+  0% {
+    opacity: 0.6;
+  }
+  100% {
+    opacity: 0;
+  }
+}

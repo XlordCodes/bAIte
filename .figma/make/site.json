@@ -1,0 +1,10 @@
+{
+  "description": "Engage with an AI-driven learning platform that tracks your progress, motivates with streak counters, and connects you with a community of learners.",
+  "robots": {
+    "index": false
+  },
+  "accessibility": {
+    "addBypassLinks": false,
+    "ignoreReducedMotion": false
+  }
+}
